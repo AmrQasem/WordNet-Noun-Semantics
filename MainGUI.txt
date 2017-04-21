@@ -1,0 +1,59 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.IO;
+
+namespace AlgoProject
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+            graph myGraph = new graph("2hypernyms.txt");
+            mapping_functions mf = new mapping_functions("1synsets11.txt");
+            Console.WriteLine("Press 1 for Shortest Common Ancestor.");
+            Console.WriteLine("Press 0 for Exit.");
+            int x = int.Parse(Console.ReadLine());
+            while (x != 0)
+            {
+                if (x == 1)
+                {
+                    Console.Clear();
+                    Console.WriteLine("Enter the first ID: ");
+                    int A = int.Parse(Console.ReadLine());
+                    //Console.WriteLine();
+                    Console.WriteLine("Enter the Second ID: ");
+                    int B = int.Parse(Console.ReadLine());
+                    int C = myGraph.shortestCommonAncestor(A, B);
+                    if (C == -1)
+                    {
+                        Console.WriteLine("Not Found!");
+                    }
+                    else
+                    {
+                        Console.WriteLine("The Shortest Common Ancestor Between " + A + " and " + B + " is: " + C);
+                    }
+                }
+                else
+                {
+                    Console.Clear();
+                    Console.WriteLine("Please Enter a valed choice");
+                }
+                Console.WriteLine("Press 1 for Shortest Common Ancestor.");
+                Console.WriteLine("Press 0 for Exit.");
+                x = int.Parse(Console.ReadLine());
+
+            }
+            Console.Clear();
+            Console.WriteLine();
+            Console.WriteLine("----------------------Thanks!----------------------");
+            Console.WriteLine();
+            // mf.mappingFunc2("a");  
+            //Console.WriteLine(myGraph.shortestCommonAncestor(9, 6));
+            //Console.WriteLine(myGraph.shortestCommonAncestor(0, 10));
+        }
+    }
+}

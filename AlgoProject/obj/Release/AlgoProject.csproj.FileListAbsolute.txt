@@ -1,0 +1,6 @@
+C:\Users\Farida Alaaeldin\Desktop\AlgoProject\AlgoProject\bin\Release\AlgoProject.exe.config
+C:\Users\Farida Alaaeldin\Desktop\AlgoProject\AlgoProject\bin\Release\AlgoProject.exe
+C:\Users\Farida Alaaeldin\Desktop\AlgoProject\AlgoProject\bin\Release\AlgoProject.pdb
+C:\Users\Farida Alaaeldin\Desktop\AlgoProject\AlgoProject\obj\Release\AlgoProject.csprojResolveAssemblyReference.cache
+C:\Users\Farida Alaaeldin\Desktop\AlgoProject\AlgoProject\obj\Release\AlgoProject.exe
+C:\Users\Farida Alaaeldin\Desktop\AlgoProject\AlgoProject\obj\Release\AlgoProject.pdb

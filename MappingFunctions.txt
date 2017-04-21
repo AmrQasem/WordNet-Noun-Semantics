@@ -1,0 +1,64 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.IO;
+
+namespace AlgoProject
+{
+    public class mapping_functions
+    {
+        public Dictionary<string, List<int>> SynsetToID = new Dictionary<string, List<int>>();
+        public Dictionary<int, string[]> fileOfIDs = new Dictionary<int, string[]>();
+
+        public mapping_functions()
+        {
+
+        }
+
+        //Mapping Function 1 take ID and return array of synsets 
+        public string[] mappingFunc1(Dictionary<int,string[]> Dic,int ID)
+        {
+            return Dic[ID];
+        }
+        
+        //Function Which Read the file and put it in List
+        public void ReadFile(string path)
+        {
+            FileStream fs = new FileStream(path, FileMode.Open, FileAccess.Read);
+            StreamReader sr = new StreamReader(fs);
+            string line = "";
+            while (sr.Peek() != -1)
+            {
+                line = sr.ReadLine();
+                string[] fields = line.Split(',');
+                string[] synsets = new string[fields.Length - 1];
+
+                for (int i = 1; i < fields.Length; i++)
+                {
+                    synsets[i - 1] = fields[i];
+                    List<int> IDs = new List<int>();
+                    if (!SynsetToID.ContainsKey(synsets[i - 1]))
+                    {
+                        IDs.Add(int.Parse(fields[0]));
+                        SynsetToID.Add(synsets[i - 1], IDs);
+                    }
+                    else
+                    {
+                        IDs = SynsetToID[synsets[i - 1]];
+                        IDs.Add(int.Parse(fields[0]));
+                        SynsetToID[synsets[i - 1]] = IDs;
+                    }
+                }
+                fileOfIDs.Add(int.Parse(fields[0]), synsets);
+            }
+        }
+
+        //Mapping Function 2 take synset and return list of IDs
+        public List<int> mappingFunc2(Dictionary<string,List<int>> file, string synset)
+        {
+            return file[synset];
+        }
+    }
+}

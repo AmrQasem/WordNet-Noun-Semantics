@@ -1,0 +1,115 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.IO;
+
+namespace projectAlgo
+{
+    class Program
+    {
+        public class words
+        {
+            public int ID;
+            public string[] synsets;
+            public words(int index)
+            {
+                synsets = new string[index];
+            }
+        }
+
+        static void Main(string[] args)
+        {
+            string p = "synsets.txt";
+            List<words> l = ReadFile(p);
+            //for (int i = 0; i < l.Count; i++)
+            //{
+            //    Console.WriteLine(l[i].ID);
+            //    for(int j=0;j<l[i].synsets.Length;j++)
+            //    {
+            //        Console.WriteLine(l[i].synsets[j]);
+            //    }
+            //    Console.WriteLine("\n");
+            //}
+            //string[] s = mappingFunc1(l, l.Count, 5);
+            List<int> ids =mappingFunc2(l,l.Count,"c");
+            for(int i=0;i<ids.Count;i++)
+            {
+                Console.WriteLine(ids[i]);
+            }
+        }
+
+        //Mapping Function 1 take ID and return array of synsets 
+        static string[] mappingFunc1(List<words> word,int size,int ID)
+        {
+            int low = 0;
+            int high = size - 1;
+            int mid=0;
+            while(low<=high)
+            {
+                mid = low + high / 2;
+                if (word[mid].ID < ID)
+                {
+                    low = mid + 1;
+                }
+                else if (word[mid].ID > ID)
+                {
+                    high = mid - 1;
+                }
+                else
+                    break;
+            }
+            string[] synsets = new string[word[mid].synsets.Length];
+            for(int i=0;i<synsets.Length;i++)
+            {
+                synsets[i] = word[mid].synsets[i];
+            }
+            return synsets;
+        }
+
+        //Function Which Read the file and put it in List
+        static List<words> ReadFile(string path)
+        {
+            FileStream fs = new FileStream(path, FileMode.Open, FileAccess.Read);
+            StreamReader sr = new StreamReader(fs);
+            string line = "";
+            List<words> records = new List<words>();
+            while (sr.Peek() != -1)
+            {
+                line = sr.ReadLine();
+                string[] fields = line.Split(',');
+                words w = new words(fields.Length - 1);
+                w.ID = int.Parse(fields[0]);
+
+                for (int i = 1; i < fields.Length; i++)
+                {
+                    w.synsets[i - 1] = fields[i];
+                }
+
+                records.Add(w);
+
+            }
+            return records;
+        }
+
+        //Mapping Function 2 take synset and return list of IDs
+        static List<int> mappingFunc2(List<words> word, int size, string synset)
+        {
+            List<int> IDs = new List<int>();
+            
+            for(int i=0;i<word.Count;i++)
+            {
+                for(int j=0;j<word[i].synsets.Length;j++)
+                {
+                    if(synset== word[i].synsets[j])
+                    {
+                        IDs.Add(word[i].ID);
+                    }
+                }
+            }   
+            
+            return IDs;
+        }
+    }
+}

@@ -1,0 +1,11 @@
+SampleCases/1synsets.txt,SampleCases/1hypernyms.txt,SampleCases/1relations.txt,SampleCases/1outcastrelations.txt
+SampleCases/2synsets.txt,SampleCases/2hypernyms.txt,SampleCases/2relations.txt
+SampleCases/3synsets.txt,SampleCases/3hypernyms.txt,SampleCases/3relations.txt,SampleCases/3outcastrelations.txt
+SampleCases/4synsets.txt,SampleCases/4hypernyms.txt,SampleCases/4relations.txt,SampleCases/4outcastrelations.txt
+SampleCases/small1synsets.txt,SampleCases/small1hypernyms.txt,SampleCases/small1relations.txt,SampleCases/small1outcast.txt
+SampleCases/small2synsets.txt,SampleCases/small2hypernyms.txt,SampleCases/small2relations.txt,SampleCases/small2outcast.txt
+SampleCases/medium1synsets.txt,SampleCases/medium1hypernyms.txt,SampleCases/medium1relations.txt,SampleCases/medium1outcast.txt
+SampleCases/medium2synsets.txt,SampleCases/medium2hypernyms.txt,SampleCases/medium2relations.txt,SampleCases/medium2outcast.txt
+SampleCases/large1synsets.txt,SampleCases/large1hypernyms.txt,SampleCases/large1relations.txt,SampleCases/large1outcast.txt
+SampleCases/large2synsets.txt,SampleCases/large2hypernyms.txt,SampleCases/large2relations.txt,SampleCases/large2outcast.txt
+SampleCases/large3synsets.txt,SampleCases/large3hypernyms.txt,SampleCases/large3relations.txt

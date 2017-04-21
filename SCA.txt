@@ -1,0 +1,53 @@
+public int shortestCommonAncestor(int id1,int id2)
+        {
+            bool mark = true;
+            markParents(id1,mark);
+            int sca=firstParent(id2);
+            mark = false;
+            markParents(id1, mark);
+            return sca;
+        }
+
+       void markParents(int id,bool mark)
+       {
+           Queue<int> Q = new Queue<int>();
+           Q.Enqueue(id);
+           while (Q.Count != 0)
+           {
+               int u = Q.Dequeue();
+               if(mark == true)
+                   myNodes[u].check = true;
+               else
+                   myNodes[u].check = false;
+               for (int i = 0; i < myNodes[u].next.Count; i++)
+               {
+                   int m = myNodes[u].next[i];
+                   if (mark==true)
+                        myNodes[m].check = true;
+                   else
+                       myNodes[m].check = false;
+                   Q.Enqueue(m);
+
+               }
+           }
+
+       }
+       int firstParent(int id)
+       {
+           Queue<int> Q = new Queue<int>();
+           Q.Enqueue(id);
+           while (Q.Count != 0)
+           {
+               int u = Q.Dequeue();
+               if (myNodes[u].check == true)
+                   return myNodes[u].value;
+               for (int i = 0; i < myNodes[u].next.Count; i++)
+               {
+                   int m = myNodes[u].next[i];
+                   if (myNodes[m].check == true)
+                       return myNodes[m].value;
+                   Q.Enqueue(m);
+               }
+           }
+           return -1;
+       }
